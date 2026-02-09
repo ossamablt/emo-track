@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Brain, PenLine, LayoutDashboard, Clock, Menu, X } from "lucide-react";
+import { Brain, PenLine, LayoutDashboard, Clock, ClipboardCheck, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useState } from "react";
 
 const links = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
   { href: "/journal", label: "Write", icon: PenLine },
+  { href: "/check-in", label: "Check-in", icon: ClipboardCheck },
   { href: "/history", label: "History", icon: Clock },
 ];
 
