@@ -1,6 +1,7 @@
-import { JournalEntry } from "./types";
+import { JournalEntry, CheckInEntry } from "./types";
 
 const STORAGE_KEY = "moodlens_entries";
+const CHECKIN_STORAGE_KEY = "moodlens_checkins";
 
 export function getEntries(): JournalEntry[] {
   if (typeof window === "undefined") return [];
@@ -25,4 +26,22 @@ export function getEntry(id: string): JournalEntry | undefined {
 
 export function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+// Check-in storage
+export function getCheckIns(): CheckInEntry[] {
+  if (typeof window === "undefined") return [];
+  const data = localStorage.getItem(CHECKIN_STORAGE_KEY);
+  return data ? JSON.parse(data) : [];
+}
+
+export function saveCheckIn(entry: CheckInEntry): void {
+  const entries = getCheckIns();
+  entries.unshift(entry);
+  localStorage.setItem(CHECKIN_STORAGE_KEY, JSON.stringify(entries));
+}
+
+export function deleteCheckIn(id: string): void {
+  const entries = getCheckIns().filter((e) => e.id !== id);
+  localStorage.setItem(CHECKIN_STORAGE_KEY, JSON.stringify(entries));
 }

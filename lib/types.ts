@@ -32,6 +32,17 @@ export const EMOTION_COLORS: Record<string, string> = {
   neutral: "#9CA3AF",
 };
 
+export interface CheckInEntry {
+  id: string;
+  type: "check-in";
+  moodScore: number;
+  answers: Record<string, { question: string; answer: string; value: number }>;
+  emotions: EmotionScore[];
+  dominantEmotion: string;
+  advice: string;
+  createdAt: string;
+}
+
 export const EMOTION_EMOJIS: Record<string, string> = {
   joy: "😊",
   sadness: "😢",
