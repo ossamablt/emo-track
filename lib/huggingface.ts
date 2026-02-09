@@ -8,7 +8,7 @@ export async function analyzeEmotion(
   apiKey: string
 ): Promise<EmotionScore[]> {
   const response = await fetch(
-    `https://api-inference.huggingface.co/models/${EMOTION_MODEL}`,
+    `https://router.huggingface.co/hf-inference/models/${EMOTION_MODEL}`,
     {
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ export async function summarizeText(
   }
 
   const response = await fetch(
-    `https://api-inference.huggingface.co/models/${SUMMARY_MODEL}`,
+    `https://router.huggingface.co/hf-inference/models/${SUMMARY_MODEL}`,
     {
       method: "POST",
       headers: {
